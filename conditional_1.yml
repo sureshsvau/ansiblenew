@@ -1,0 +1,27 @@
+
+-
+  name: Install NGINX
+  hosts: all
+  vars:
+    packages:
+      - name: nginx
+        required: True
+      - name: mysql
+        required: True
+      - name: apache
+        required: False
+
+  tasks:
+    - name: install "{{ item.name}}" on debian
+      apt:
+        name: "{{ item.name }}"
+        state: present
+      when: item.required == True and ansible_os_family == 'Debian'
+      loop: "{{ packages }}"
+
+    - name: install "{{ item.name }}" on redhat
+      yum:
+        name: "{{ item.name }}"
+        state: present
+      when: item.required == True and ansible_os_family == 'Redhat'
+      loop: "{{ packages }}"
