@@ -1,8 +1,6 @@
 -
     name: 'Add dns server to resolv.conf'
     hosts: target1
-    vars:
-        dns_server: 10.1.250.10
     tasks:
       - lineinfile:
           path: /etc/resolv.conf
