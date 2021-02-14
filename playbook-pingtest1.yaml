@@ -1,6 +1,9 @@
 -
-  name: Test Connectivity to target servers
-  hosts: target1
-  tasks:
-    - name: ping Test
-      ping: 
+    name: 'Add dns server to resolv.conf'
+    hosts: target1
+    vars:
+        dns_server: 10.1.250.10
+    tasks:
+      - lineinfile:
+          path: /etc/resolv.conf
+          line: 'nameserver {{dns_server}}'
