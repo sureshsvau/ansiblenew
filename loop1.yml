@@ -1,0 +1,9 @@
+-
+  name: create users
+  hosts: target1
+  tasks:
+    - user: name='{{ item }}' state=present
+      with_items:
+        - joe
+        - suresh
+        - Babu

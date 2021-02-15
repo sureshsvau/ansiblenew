@@ -1,0 +1,8 @@
+-
+  name: get from multiple URLs
+  hosts: target1
+  tasks:
+    - debug: var=item
+      with_url:
+        - "https://site1.com/get-servers"
+        - "https://site2.com/get/servers"

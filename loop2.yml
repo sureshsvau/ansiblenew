@@ -1,0 +1,9 @@
+-
+  name: view config files
+  hosts: target1
+  tasks:
+    - debug: var=item
+      with_files:
+        - "/etc/hosts"
+        - "/etc/resolv.conf"
+        - "/etc/ntp.conf"
